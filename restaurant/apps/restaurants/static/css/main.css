@@ -1,3 +1,16 @@
-body{
-	background-color: #c3c3c3;
+/* Estilos personalizados por el usuario */
+
+
+.buscador-home{
+	margin-bottom: 10px;
+	margin-top: 20px;
+}
+
+.contenido-home{
+	margin-top: 2em;
+}
+
+.list-group-item{
+	border: none;
+	min-height: 230px;
 }
