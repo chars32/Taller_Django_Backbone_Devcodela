@@ -14,8 +14,11 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     #Esta URL sirve para visualizar las imagenes
-    #se importa el settings
     url(r'^media/(?P<path>.*)$','django.views.static.serve',
+    		#importamos el settings, arriba
     		{'document_root':settings.MEDIA_ROOT,}
     	),
+
+    #esta URL nos la da Python-SocialAOuth, para poder hacer login
+    url('', include('social.apps.django_app.urls', namespace='social')),
 )

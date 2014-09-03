@@ -37,6 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.restaurants',
+    #declaramos esta app para poder hacer login con redes sociales
+    'social.apps.django_app.default',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -82,5 +84,18 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+#para poder ver las fotos
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = 'http://localhost:8000/media/'
+
+#backend para social-auth
+AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.FacebookAppOAuth2',
+    'social.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+#pagina a donde regresara despues del logueo con facebook
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = "/"
+#llaves de facebook para poder usar app
+SOCIAL_AUTH_FACEBOOK_KEY = '222267817969054'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'c87167fa296ef46d50263ba67ed43556'
