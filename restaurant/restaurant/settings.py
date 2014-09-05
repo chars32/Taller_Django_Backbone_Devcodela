@@ -39,6 +39,8 @@ INSTALLED_APPS = (
     'apps.restaurants',
     #declaramos esta app para poder hacer login con redes sociales
     'social.apps.django_app.default',
+    #app para crear apis
+    'rest_framework',
 )
 
 MIDDLEWARE_CLASSES = (
