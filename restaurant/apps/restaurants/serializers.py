@@ -1,6 +1,6 @@
 from rest_framework import serializers 
 
-from .models import Restaurant
+from .models import Restaurant, Category, City, Payment
 
 class RestaurantSerializer(serializers.ModelSerializer):
 
@@ -13,3 +13,18 @@ class RestaurantSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Restaurant
 		exclude = ('payment', 'category')
+
+class CategorySerializer(serializers.ModelSerializer):
+
+	class Meta:
+		model = Category 
+
+class CitySerializer(serializers.ModelSerializer):
+
+	class Meta:
+		model = City 
+
+class PaymentSerializer(serializers.ModelSerializer):
+
+	class Meta:
+		model = Payment 
