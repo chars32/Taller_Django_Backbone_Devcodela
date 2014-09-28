@@ -4,7 +4,46 @@ app.mainView = Backbone.View.extend({
 	el: '#app',
 
 	events: {
-		'keyup #buscador': 'buscarRestaurant'
+		'keyup #buscador': 'buscarRestaurant',
+		'click #ciudad a': 'selectCiudad',
+		'click .categoria': 'selectCategoria',
+		'click .pago': 'selectPago'
+	},
+
+	selectCiudad: function(ev){
+		window.ciudad = $(ev.target).attr('id');
+		app.restaurantCiudad = Backbone.Model.extend({
+			urlRoot: 'api/ciudades/' + window.ciudad + '/restaurants'
+		});
+		var restaurantCiudades = Backbone.Collection.extend({
+			model: app.restaurantCiudad,
+			url: '/api/ciudades/' + window.ciudad + '/restaurants/'
+		});
+		app.restaurantCiudadesCollection = new restaurantCiudades();
+	},
+
+	selectCategoria: function(ev){
+		window.categoria = $(ev.target).attr('id');
+		app.restaurantCategoria = Backbone.Model.extend({
+			urlRoot: 'api/categoria/' + window.categoria + '/restaurants'
+		});
+		var restaurantCategorias = Backbone.Collection.extend({
+			model: app.restaurantCategoria,
+			url: '/api/categoria/' + window.categoria + '/restaurants/'
+		});
+		app.restaurantCategoriasCollection = new restaurantCategorias();
+	},
+
+	selectPago: function(ev){
+		window.pago = $(ev.target).attr('id');
+		app.restaurantPago = Backbone.Model.extend({
+			urlRoot: 'api/payments/' + window.pago + '/restaurants'
+		});
+		var restaurantPagos = Backbone.Collection.extend({
+			model: app.restaurantPago,
+			url: '/api/payments/' + window.pago + '/restaurants/'
+		});
+		app.restaurantPagosCollection = new restaurantPagos();
 	},
 
 	initialize: function(){
@@ -24,6 +63,28 @@ app.mainView = Backbone.View.extend({
 			$('.list-group').append(vista.render().$el);
 		}
 	},
+
+	filtroCiudad: function(){
+		var self = this;
+		app.restaurantCiudadesCollection.fetch({success: function(ciudades){
+			ciudades.each(self.agregarRestaurant, self);
+		}});
+	},
+
+	filtroCategoria: function(){
+		var self = this;
+		app.restaurantCategoriasCollection.fetch({success: function(categorias){
+			categorias.each(self.agregarRestaurant, self)
+		}});
+	},
+
+	filtroPago: function(){
+		var self = this;
+		app.restaurantPagosCollection.fetch({succes: function(pagos){
+			pagos.each(self.agregarRestaurant, self);
+		}});
+	},
+
 
 	buscarRestaurant: function(){
 		window.stade = true;

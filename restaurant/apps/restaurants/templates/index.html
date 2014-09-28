@@ -56,10 +56,10 @@
         		<div class="col-sm-6 buscador-home">
         			<div class="input-group">
 				      <div class="input-group-btn">
-				        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Elige la ciudad <span class="caret"></span></button>
-				        <ul class="dropdown-menu" role="menu">
+				        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="city">Elige la ciudad <span class="caret"></span></button>
+				        <ul class="dropdown-menu" role="menu" id="ciudad">
                         {% for city in cities  %}
-                            <li><a href="#">{{ city.name }}</a></li>
+                            <li><a href="#" id="{{city.id}}">{{ city.name }}</a></li>
                         {% endfor %}
 				        </ul>
 				      </div><!-- /btn-group -->
@@ -80,7 +80,7 @@
                         {% for category in categories  %}
                         <div class="checkbox">
                             <label for="">
-                                <input type="checkbox"> {{ category.name }}
+                                <input type="checkbox" class="categoria" id="{{category.id}}"> {{ category.name }}
                             </label>
                             </div>
                         {% endfor %}
@@ -96,7 +96,7 @@
                         {% for pago in payments  %}
                         <div class="checkbox">
                             <label for="">
-                                <input type="checkbox"> {{ pago.pay }}
+                                <input type="checkbox" class="pago" id="{{payment.id}}"> {{ pago.pay }}
                             </label>
                         </div>
                         {% endfor %}
@@ -129,6 +129,10 @@
         <script>
             window.stade = false;
             window.cantidad = 5;
+
+            window.ciudad = -1;
+            window.categoria = -1;
+            window.pago = -1;
         </script>
 
  		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
