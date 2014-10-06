@@ -22,3 +22,7 @@ class IndexView(TemplateView):
 	    #3. pasamos al contexto de restaurants los tips y restaurants
 	    context['restaurants'] = zip(restaurants, tips)
 	    return context
+
+class DetalleView(TemplateView):
+
+	template_name = "detalle.html"
