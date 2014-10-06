@@ -1,9 +1,5 @@
 /* Estilos personalizados por el usuario */
 
-.arreglo{
-	float: right;
-	margin: 14px 0;
-}
 .buscador-home{
 	margin-bottom: 10px;
 	margin-top: 20px;
@@ -16,4 +12,8 @@
 .list-group-item{
 	border: none;
 	min-height: 230px;
+}
+
+.img-64{
+	width: 64px;
 }

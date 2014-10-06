@@ -1,0 +1,113 @@
+{% load static from staticfiles%}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+        <script src="{% static 'js/vendor/modernizr-2.6.2-respond-1.1.0.min.js' %}"></script>
+    </head>
+    <body id="app">
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div class="navbar navbar-default">
+        	<div class="container">
+			    <div class="navbar-header">
+			      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			      </button>
+			      <a class="navbar-brand" href="#">Donde Comer</a>
+			    </div>
+                {% if user.is_authenticated %}
+                    <div class="collapse navbar-collapse navbar-right" id="menu">
+                    <div class="btn btn-default navbar-btn">{{user.username}}</div>
+                    </div>           
+                {% else %}
+    			    <div class="collapse navbar-collapse navbar-right" id="menu">
+    			    	<a href="{% url 'social:begin' 'facebook' %}" class="btn btn-default navbar-btn">
+    			    		Login con Facebook
+    			    	</a>
+    			    </div>                
+                {% endif %}
+
+        	</div>
+        </div>
+
+        <div class="container">
+                <h1 class="page-header">El paisa </h1>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <img class="img-responsive" src="http://cdn.kiwilimon.com/recetaimagen/13857/6210.jpg" alt="">
+                </div>
+                <div class="col-lg-8">
+                    <p class="lead">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nesciunt, mollitia, laboriosam adipisci nihil accusamus! Quia explicabo dolor ipsa, recusandae similique, deserunt doloribus accusamus officiis, impedit fugiat nisi perferendis ab.
+                    </p>
+                    <p>Tipos de pago: Efetivo, Mastercard y Visa-</p>
+                    <p>Tipo de comida: Mariscos, Carnes y Natural</p>
+                </div>
+            </div>
+
+            <hr>
+
+            <h4>Tips</h4>
+
+            <form role="form">
+              <div class="form-group">
+                <label>Deja un tip</label>
+                <input type="text" class="form-control" placeholder="Deja un tip">
+              </div>
+
+              <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+
+            <div class="media">
+              <a class="pull-left" href="#">
+                <img class="media-object img-64" src="https://lh4.googleusercontent.com/-6J_KYCe50bs/TxI_Wwf-EbI/AAAAAAAAAiE/xeZTpLGQ1G4/s1024/IMG_0388.JPG" alt="...">
+              </a>
+              <div class="media-body">
+                <h4 class="media-heading">Carlos Garcia</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit molestias quas, ratione beatae inventore eveniet est alias architecto tempore ipsum sapiente, consequatur, totam fugiat? Amet incidunt mollitia molestiae sed saepe.</p>
+              </div>
+            </div>
+
+            <div class="media">
+              <a class="pull-left" href="#">
+                <img class="media-object img-64" src="https://lh4.googleusercontent.com/-6J_KYCe50bs/TxI_Wwf-EbI/AAAAAAAAAiE/xeZTpLGQ1G4/s1024/IMG_0388.JPG" alt="...">
+              </a>
+              <div class="media-body">
+                <h4 class="media-heading">Carlos Garcia</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit molestias quas, ratione beatae inventore eveniet est alias architecto tempore ipsum sapiente, consequatur, totam fugiat? Amet incidunt mollitia molestiae sed saepe.</p>
+              </div>
+            </div>
+
+            <div class="media">
+              <a class="pull-left" href="#">
+                <img class="media-object img-64" src="https://lh4.googleusercontent.com/-6J_KYCe50bs/TxI_Wwf-EbI/AAAAAAAAAiE/xeZTpLGQ1G4/s1024/IMG_0388.JPG" alt="...">
+              </a>
+              <div class="media-body">
+                <h4 class="media-heading">Carlos Garcia</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit molestias quas, ratione beatae inventore eveniet est alias architecto tempore ipsum sapiente, consequatur, totam fugiat? Amet incidunt mollitia molestiae sed saepe.</p>
+              </div>
+            </div>
+
+        </div>
+    </body>
+</html>
